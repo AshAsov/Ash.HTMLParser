@@ -184,7 +184,7 @@ namespace Ash.HTMLParser
 
                 if (actualChar != '=')
                 {
-                    tag.AddAttribute(attributeName, null);
+                    tag.AddAttribute(attributeName, string.Empty);
                     if (actualChar == '>')
                         break;
                     continue;
