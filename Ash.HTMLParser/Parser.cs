@@ -243,34 +243,5 @@ namespace Ash.HTMLParser
         }
 
         #endregion Parse
-
-        public ITable? TableById(string id)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-                throw new ArgumentException("Argument 'id' is null or whitespace");
-
-            var tableTag = _tags.FirstOrDefault(tag => tag.Type == "table" && tag.Id == id);
-            if (tableTag == null)
-                return null;
-
-            return GetTable(tableTag);
-        }
-
-        public ITable? TableByName(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Argument 'name' is null or whitespace");
-
-            var tableTag = _tags.FirstOrDefault(tag => tag.Type == "table" && tag.InnerGetAttribute(name) == "name");
-            if (tableTag == null)
-                return null;
-
-            return GetTable(tableTag);
-        }
-
-        private ITable? GetTable(Tag tableTag)
-        {
-            var result = new Table();
-        }
     }
 }
