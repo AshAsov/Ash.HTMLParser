@@ -54,12 +54,9 @@ namespace Ash.HTMLParser
             return _tags.Where(tag => classes.All(cs => tag.InnerClasses.Contains(cs))).ToList<ITag>();
         }
 
-        public List<string> AllHrefs(string tagType, ICollection<string>? classes = null)
+        public List<string> AllHrefs(ICollection<string>? classes = null)
         {
-            if (string.IsNullOrWhiteSpace(tagType))
-                throw new ArgumentException("Argument 'tagType' is null or whitespace");
-
-            var result = _tags.Where(tag => tag.InnerType == tagType);
+            var result = _tags.Where(tag => tag.InnerType == "a");
             if (classes != null)
                 result = result.Where(tag => classes.All(cs => tag.InnerClasses.Contains(cs)));
 
